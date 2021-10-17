@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body class="container">
+
+<header>
+  
+</header>
+
+<script type="text/javascript">
+  var data = <%= JSON.stringify(data) %>
+</script>
+<main>
+  <div class="jumbotron">
+    <h1>Welcome to random dice roller</h1>
+    <p>Lets pick the number and start.</p>
+  </div>
+
+  <div>
+    <form action="/rolldice" method="post">
+      <label for="Number of Rolls">Number of Rolls</label>
+      <input type="number" name="rolls" id="rolls" max="6" min="1" value="1">
+      <label for="sides">Number of sides</label>
+      <!-- <input type="number" name="sides" id="sides"> -->
+      <select id="sides" name="sides">
+        <option value="4" >d4</option>
+        <option value="5" >d5</option>
+        <option value="6" >d6</option>
+        <option value="8" >d8</option>
+        <option value="10">d10</option>
+        <option value="20">d20</option>
+      </select>
+      <button type="submit">Submit</button>
+    </form>
+
+    <div>
+      <% for(var i=0; i<data.length; i++) {%>
+        <tr>
+          <td>
+            <%= data[i]%>
+          </td>
+        </tr>
+     <% } %>
+    </div>
+  </div>
+</main>
+
+<footer>
+</footer>
+
+</body>
+</html>
